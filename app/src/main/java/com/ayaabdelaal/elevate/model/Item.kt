@@ -1,4 +1,4 @@
-package com.ayaabdelaal.elevate.data
+package com.ayaabdelaal.elevate.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
