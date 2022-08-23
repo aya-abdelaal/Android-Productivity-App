@@ -18,7 +18,7 @@ interface ItemDao {
     @Query("SELECT * from item")
     fun getItems(): List<Item>
 
-    @Query("SELECT * from item where done_times = total_times")
+    @Query("SELECT * from item where done_times != total_times")
     fun getItemsLeft() : List<Item>
 
 
