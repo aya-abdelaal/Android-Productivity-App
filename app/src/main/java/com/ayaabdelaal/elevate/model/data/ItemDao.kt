@@ -2,6 +2,7 @@ package com.ayaabdelaal.elevate.model.data
 
 import androidx.room.*
 import com.ayaabdelaal.elevate.model.Item
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ItemDao {
@@ -16,10 +17,13 @@ interface ItemDao {
     suspend fun delete(item: Item)
 
     @Query("SELECT * from item")
-    fun getItems(): List<Item>
+    fun getItems(): Flow<List<Item>>
 
-    @Query("SELECT * from item where done_times != total_times")
-    fun getItemsLeft() : List<Item>
+    @Query("SELECT * from item where done != total")
+    fun getItemsLeft() : Flow<List<Item>>
+
+    @Query("DELETE FROM item")
+    fun clearTable()
 
 
 }

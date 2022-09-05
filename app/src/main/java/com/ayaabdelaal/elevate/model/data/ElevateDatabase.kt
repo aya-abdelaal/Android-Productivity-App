@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.ayaabdelaal.elevate.model.Item
-import com.ayaabdelaal.elevate.model.Category
+import com.ayaabdelaal.elevate.model.data.Converters
 
 @Database(entities = [Item::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class ElevateDatabase : RoomDatabase() {
     abstract fun itemDao() : ItemDao
 
