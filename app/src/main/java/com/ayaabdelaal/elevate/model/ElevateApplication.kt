@@ -11,6 +11,4 @@ import java.util.prefs.Preferences
 class ElevateApplication : Application() {
     val database: ElevateDatabase by lazy { ElevateDatabase.getDatabase(this) }
 
-    val monthlyDataStore = MonthlyDataStore(this)
-
 }

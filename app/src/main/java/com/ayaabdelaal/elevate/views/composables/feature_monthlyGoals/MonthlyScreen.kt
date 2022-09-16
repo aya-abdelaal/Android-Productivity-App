@@ -33,14 +33,17 @@ fun MonthlyScreen(viewModel: MonthlyViewModel, padding:PaddingValues, navigateTo
             contentDescription ="",
         modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop)
+
     LazyColumn(modifier = Modifier
         .fillMaxSize()
         .padding(padding)
         .padding(16.dp)) {
 
 
+
+
         item{
-            MonthHeader(theme = viewModel.theme, about = viewModel.about)
+            MonthHeader(viewModel.theme,viewModel.about)
         }
 
         item {

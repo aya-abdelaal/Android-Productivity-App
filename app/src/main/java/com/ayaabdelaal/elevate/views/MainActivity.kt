@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
         val MonthlyViewModel by viewModels<MonthlyViewModel> {
             MonthlyViewModel.MonthlyViewModelFactory((this.applicationContext as ElevateApplication).database.goalDao(),
-                (this.applicationContext as ElevateApplication).monthlyDataStore
+                MonthlyDataStore(this.applicationContext)
             )
         }
 

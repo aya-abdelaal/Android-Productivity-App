@@ -12,35 +12,30 @@ import com.ayaabdelaal.elevate.model.data.MonthlyDataStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 
 class MonthlyViewModel(private val goalDao: GoalDao, private val monthlyDataStore: MonthlyDataStore): ViewModel( ) {
 
 
-    var goals : MutableState<List<Goal>>
-    var theme : MutableState<String>
-    var about : MutableState<String>
+    var goals : MutableState<List<Goal>> = mutableStateOf(emptyList())
+    var theme : MutableState<String> = mutableStateOf("")
+    var about : MutableState<String> = mutableStateOf("")
 
     init {
-        goals = mutableStateOf(emptyList())
-        theme = mutableStateOf("hi")
-        about = mutableStateOf("")
         viewModelScope.launch{
+            theme.value = monthlyDataStore.getMonthlyTheme.first()
+            about.value = monthlyDataStore.getMonthlyAbout.first()
             getAllGoals().collect{goals.value = it}
-            monthlyDataStore.getMonthlyTheme().collect{
-                theme.value = it
-            }
-            monthlyDataStore.getMonthlyAbout().collect{
-                about.value = it}
         }
     }
 
 
 
-    fun saveMonthly(theme1:String, about:String){
+    fun saveMonthly(theme:String, about:String){
         viewModelScope.launch(Dispatchers.IO) {
-            monthlyDataStore.saveMonthly(theme1,about)
+            monthlyDataStore.saveMonthly(theme,about)
         }
     }
 
