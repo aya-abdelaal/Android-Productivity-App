@@ -25,14 +25,15 @@ import com.ayaabdelaal.elevate.ui.theme.lightGray
 import com.ayaabdelaal.elevate.viewmodel.ToDoListViewModel
 
 @Composable
-fun CategorizedScreen(viewModel: ToDoListViewModel, onNavigate : () -> Unit){
+fun CategorizedScreen(viewModel: ToDoListViewModel, onNavigate : () -> Unit, padding : PaddingValues){
 
     val categories = listOf(Category.Morning, Category.Habit, Category.Todo, Category.Night)
 
     LazyColumn(modifier = Modifier
         .background(lightGray)
         .fillMaxSize()
-        .padding(24.dp)
+        .padding(padding)
+        .padding(16.dp)
         ) {
 
         item{

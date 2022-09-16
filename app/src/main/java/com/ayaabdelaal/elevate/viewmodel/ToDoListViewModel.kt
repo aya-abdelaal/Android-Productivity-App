@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
 import com.ayaabdelaal.elevate.model.Category
 import com.ayaabdelaal.elevate.model.data.ItemDao
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 
 class ToDoListViewModel(private val itemDao: ItemDao) : ViewModel(){

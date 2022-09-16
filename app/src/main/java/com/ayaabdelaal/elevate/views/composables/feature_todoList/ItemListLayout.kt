@@ -35,7 +35,7 @@ fun Header(switchListView : () -> Unit){
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth()
-            .height(120.dp)){
+            .height(110.dp)){
 
         Column {
             val simpleDate = SimpleDateFormat("EEE, MMM dd")
@@ -81,10 +81,10 @@ fun AddItemSection(category: Category,
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp)
                 .clip(shape = Shapes.medium)
-                .background(category.color)
-                .padding(16.dp),
+                .border(2.dp, color = category.color, Shapes.medium)
+                .padding(10.dp),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -95,39 +95,34 @@ fun AddItemSection(category: Category,
 
             Row(verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween){
-                Text(text = "Name : ", color = lightGray, fontWeight = FontWeight.Bold, fontSize = 18.sp)
+
                 TextField(
                     modifier = Modifier
-                        .padding(horizontal = 8.dp),
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth(0.65f),
                     value = name,
                     onValueChange = { name = it},
-                    placeholder = { Text("Name", color = lightGray) },
+                    placeholder = { Text("Name", color = category.color) },
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = lightGray,
+                        textColor = category.color,
                         focusedBorderColor = darkGray,
                         unfocusedBorderColor = lightGray)
                 )
-            }
 
-            Row(horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(8.dp)){
-                Text(text = "Times Done: ", color = lightGray, fontWeight = FontWeight.Bold, fontSize = 18.sp)
-                TextField(
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp),
+                            TextField(
+                            modifier = Modifier.fillMaxWidth(),
                     value = timesDone,
                     onValueChange = { timesDone = it},
-                    placeholder = { Text("Times",  color = lightGray)},
+                    placeholder = { Text("Times",  color = category.color)},
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        textColor = lightGray,
+                        textColor = category.color,
                         focusedBorderColor = darkGray,
                         unfocusedBorderColor = lightGray)
                 )
 
-
             }
+
 
 
 
@@ -136,23 +131,23 @@ fun AddItemSection(category: Category,
                     .padding(4.dp)
                     .fillMaxWidth(0.5f),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = lightGray
+                        backgroundColor = category.color
                     ),
                     shape = RoundedCornerShape(24.dp),
                     onClick = ({onSave(name,timesDone,category)
                         addBoxEnabled = false})){
-                    Text("save" , color = darkerGray)
+                    Text("save" , color = lightGray)
                 }
 
                 Button(modifier = Modifier
                     .padding(4.dp)
                     .fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = lightGray
+                        backgroundColor = category.color
                     ),
                     shape = RoundedCornerShape(24.dp),
                     onClick = { addBoxEnabled = false}) {
-                    Text("cancel", color = darkerGray)
+                    Text("cancel", color = lightGray)
                 }
             }
 

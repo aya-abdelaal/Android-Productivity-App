@@ -1,5 +1,6 @@
 package com.ayaabdelaal.elevate.model
 
+import androidx.annotation.IdRes
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import com.ayaabdelaal.elevate.R
