@@ -22,10 +22,11 @@ The navigation of the app was built using the Jetpack Navigation Component.
 
 ## Monthly planner 
 
+where you can set intentions and goals for your month. Preferences DataStore is used here to store the 
+intentions as only 2 strings had to be saved.
+
 <img
   src="monthly-gif.gif"
   alt="monthly preview of app"
   style="display: inline-block; margin: 0 auto; max-width: 50%">
 
-where you can set intentions and goals for your month. Preferences DataStore is used here to store the 
-intentions as only 2 strings had to be saved.
